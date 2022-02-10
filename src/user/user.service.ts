@@ -5,18 +5,18 @@ import * as bcrypt from 'bcrypt';
 // import { InjectConnection } from '@nestjs/mongoose';
 // import { Connection } from 'mongoose';
 import { User } from './types/user';
-import { RegisterDTO } from './dto/register.dto';
+import { RegisterDto } from './dto/register.dto';
 import { Payload } from './types/payload';
-import { USER_PROVIDER } from './constants';
+//import { USER_PROVIDER } from './constants';
 
 @Injectable()
 export class UserService {
     constructor(     
-      @Inject(USER_PROVIDER)
+      //@Inject(USER_PROVIDER)
       @InjectModel('User') private userModel: Model<User>,
     ) {}
 
-    async create(RegisterDTO: RegisterDTO) {
+    async create(RegisterDTO: RegisterDto) {
         const { email } = RegisterDTO;
         const user = await this.userModel.findOne({ email });
         if (user) {
@@ -35,7 +35,7 @@ export class UserService {
         return await this.userModel.findOne({ email });
     }
 
-    async findByLogin(UserDTO: RegisterDTO) {
+    async findByLogin(UserDTO: RegisterDto) {
         const { email, password } = UserDTO;
         const user = await this.userModel.findOne({ email });
         if (!user) {
