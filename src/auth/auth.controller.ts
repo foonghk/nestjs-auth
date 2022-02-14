@@ -53,4 +53,9 @@ export class AuthController {
      // return { user, token};
     }
 
+    @Get('signout')
+    async logout(@Res({ passthrough: true }) response: Response){
+        response.cookie('access_token', '', { expires: new Date() })
+        .send({ logout: true });
+    }
 }

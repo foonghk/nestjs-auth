@@ -24,8 +24,7 @@ export class UserService {
         }
     
         const createdUser = new this.userModel(RegisterDTO);
-
-       
+      
         await createdUser.save();
         return this.sanitizeUser(createdUser);
     }
