@@ -46,8 +46,8 @@ export class AuthController {
       const token = await this.authService.signPayload(payload);
       response.cookie('access_token', token, {
           httpOnly: true,
-          domain: 'localhost', // your domain here!
-          expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+          //domain: 'localhost', // your domain here!
+          expires: new Date(Date.now() + 1000 * 60 * 60),
       })
       .send({ user, success: true });
      // return { user, token};
