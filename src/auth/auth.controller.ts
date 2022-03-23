@@ -47,7 +47,9 @@ export class AuthController {
       response.cookie('access_token', token, {
           httpOnly: true,
           //domain: 'localhost', // your domain here!
-          expires: new Date(Date.now() + 1000 * 60 * 60),
+          // expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+          //expires: new Date(Date.now() + 60 * 60),
+          //expiresIn: 300s
       })
       .send({ user, success: true });
      // return { user, token};
